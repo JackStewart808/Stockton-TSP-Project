@@ -16,8 +16,8 @@ public class TestMapBuilder {
         }
 
         // example: calculate distance using DistanceCalculator
-        Node a = map.get("A_B_Stairs_0-1");
-        Node b = map.get("Lower_00s_Entrance_A");
+        Node a = map.get("Entrance_AaS");
+        Node b = map.get("A_WING_ENTRANCE");
         if (a != null && b != null) {
             double feet = DistanceCalculator.feet(a, b);
             System.out.println("Distance: " + feet + " feet");

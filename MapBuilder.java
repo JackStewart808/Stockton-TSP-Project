@@ -26,11 +26,12 @@ public class MapBuilder {
                 }
 
                 List<String> parts = splitCsvLine(line);
-                if (parts.size() < 3) continue;
+                if (parts.size() < 4) continue;
 
                 String wkt = parts.get(0).trim();
                 String name = parts.get(1).trim();
-                String connectionText = parts.get(2).trim();
+                String floorString = parts.get(2).trim();
+                String connectionText = parts.get(3).trim();
 
                 // extract coordinates
                 Matcher m = pointPattern.matcher(wkt);
@@ -40,9 +41,17 @@ public class MapBuilder {
                     lat = Double.parseDouble(m.group(2));
                 }
 
+                //Set the floor, if inbetween set to 0.5 or 1.5
+                double floor;
+                floor = switch (floorString) {
+                    case "0-1" -> 0.5;
+                    case "1-2" -> 1.5;
+                    default -> Double.parseDouble(floorString);
+                };
+                
+
                 // parse connections
-                connectionText = connectionText.replace("[", "").replace("]", "");
-                String[] connectionArray = connectionText.split(",");
+                String[] connectionArray = connectionText.split(":");
                 List<String> connections = new ArrayList<>();
                 for (String c : connectionArray) {
                     c = c.trim();
@@ -51,7 +60,7 @@ public class MapBuilder {
                     }
                 }
 
-                Node node = new Node(name, lat, lon, connections);
+                Node node = new Node(name, lat, lon, floor, connections);
                 map.put(name, node);
             }
 

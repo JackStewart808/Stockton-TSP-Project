@@ -1,14 +1,14 @@
 WKT,name,description
-"POINT (-74.5296845 39.4933526)",Lower_00s_Entrance_A,[A_B_Strairs_0-1, College_Walk_B]
-"POINT (-74.5296471 39.4929397)",College_Walk_B,[College_Walk_A, Lower_00s_Entrance_A, B_Wing_Entrance]
-"POINT (-74.5298927 39.4929435)",B_Wing_Entrance,[College_Walk_B, Out_B_Wing_Stair]
-"POINT (-74.530291 39.4932768)",Einstein_Bros_Entrance,[College_Walk_C, Out_Stair_B]
-"POINT (-74.5302213 39.492928)",Out_Stairs_B,[Einstein_Bros_Entrance, College_Walk_B, College_Walk_C]
-"POINT (-74.5288427 39.4933956)",Shuttle_Drop_Off,[Entrance_AaS, College_Walk_A]
-"POINT (-74.5288937 39.4929506)",College_Walk_A,[Entrance_AaS, Shuttle_Drop_Off]
-"POINT (-74.5289937 39.4933873)",Entrance_AaS,[Shuttle_Drop_Off, College_Walk_A, Lower_00s_Entrance_A]
-"POINT (-74.530819 39.4931995)",Lower_00s_Entrance_B,[College_Walk_C]
-"POINT (-74.5309335 39.4933038)",Lower_00s_Entrance_C,[Lower_00s_Entrance_B, College_Walk_C, Out_Mid_Stair_A]
-"POINT (-74.5299077 39.4933511)",A_B_Stairs_0-1,[Lower_00s_Entrance_A, Einstein_Bros_Entrance]
-"POINT (-74.5305382 39.4929022)",College_Walk_C,[College_Walk_B, Out_Stairs_B, Lower_00s_Entrance_B, Lower_00s_Entrance_C]
-"POINT (-74.5309844 39.4933584)",Out_Mid_Stair_A,[Lower_00s_Entrance_C]
+"APOINT (-74.5298027 39.4933532)",_WING_MAIN,0, A_WING_ENTRANCE:B_WING_MAIN:Exit_Stairs_A:Inside_B_Stairs
+"POINT (-74.5289937 39.4933873)",Entrance_AaS,0,Shuttle_Drop_Off:College_Walk_A:A_WING_ENTRANCE
+"POINT (-74.5296845 39.4933526)",A_WING_ENTRANCE,0,A_WING_MAIN:College_Walk_B:Exit_Stairs_A
+"POINT (-74.5300134 39.4933424)",B_WING_MAIN,0-1, B_Wing_Entrance:Inside_B_Stairs:Einstein_Bros_Entrance:C_WING_MAIN
+"POINT (-74.5300697 39.4929693)",B_Wing_Entrance,0,College_Walk_C:Out_Stairs_B:B_WING_MAIN
+"POINT (-74.5303568 39.4933791)",C_WING_MAIN,0-1, B_WING_MAIN:Einstein_Bros_Entrance:Exit_Stairs_C:D_WING_MAIN
+"POINT (-74.5303044 39.4932996)",Einstein_Bros_Entrance,0,College_Walk_C:Out_Stair_B:Inside_B_Stairs:B_WING_MAIN:C_WING_MAIN
+"POINT (-74.5305127 39.4938209)",C_WING_BACK_ENTRANCE,0-1,D_WING_BACK_ENTRANCE:C_WING_MAIN
+"POINT (-74.5307859 39.4933647)",D_WING_MAIN,0-1, C_WING_MAIN:Inside_Stairs_D:D_WING_ENTRANCE_1:D_WING_ENTRANCE_2:D_WING_CONNECTOR
+"POINT (-74.5306924 39.4938157)",D_WING_BACK_ENTRANCE,0-1,C_WING_BACK_ENTRANCE:D_WING_MAIN
+"POINT (-74.530819 39.4931995)",D_WING_ENTRANCE_1,0,College_Walk_E:Inside_Stairs_D:D_WING_MAIN
+"POINT (-74.5309161 39.4932811)",D_WING_ENTRANCE_2,0,D_WING_CONNECTOR:D_WING_MAIN:Inside_Stairs_D:D_WING_ENTRANCE_1
+"POINT (-74.5309899 39.4933134)",D_WING_CONNECTOR,0-1,D_WING_MAIN:D_WING_ENTRANCE_2:CONNECTOR_STAIRS_D_TO_F:Inside_Stairs_D

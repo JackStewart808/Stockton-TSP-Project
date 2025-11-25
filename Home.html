@@ -1,0 +1,82 @@
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { ChevronRight } from "lucide-react";
+
+// Example destination list (replace with real data)
+const DESTINATIONS = [
+  "Campus Center",
+  "Library",
+  "Housing 5",
+  "North Lot",
+  "Sports Center",
+  "Science Building",
+];
+
+export default function TSPHomePage() {
+  const [points, setPoints] = useState([{ id: 1, value: "" }]);
+
+  const addPoint = () => {
+    setPoints([...points, { id: Date.now(), value: "" }]);
+  };
+
+  const updatePoint = (id, value) => {
+    setPoints(points.map((p) => (p.id === id ? { ...p, value } : p)));
+  };
+
+  const handleGenerate = () => {
+    const query = new URLSearchParams({ points: JSON.stringify(points) }).toString();
+    window.location.href = `/tsp-result?${query}`;
+  };
+
+  return (
+    <div className="min-h-screen flex justify-center items-start p-6 bg-gray-100">
+      <Card className="w-full max-w-xl shadow-xl rounded-2xl p-4">
+        <CardContent>
+          <h1 className="text-3xl font-bold mb-6 text-center">
+            Stockton University TSP Generator
+          </h1>
+
+          {/* Points */}
+          <div className="space-y-4">
+            {points.map((point, index) => (
+              <div key={point.id} className="flex flex-col">
+                <label className="text-sm font-medium mb-1">
+                  {index === 0 ? "Starting Point" : `Destination ${index}`}
+                </label>
+                <select
+                  className="border rounded-xl p-2"
+                  value={point.value}
+                  onChange={(e) => updatePoint(point.id, e.target.value)}
+                >
+                  <option value="">Select a destination</option>
+                  {DESTINATIONS.map((d) => (
+                    <option key={d} value={d}>
+                      {d}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            ))}
+
+            {/* Add another point button */}
+            <Button
+              variant="outline"
+              className="w-full rounded-xl"
+              onClick={addPoint}
+            >
+              Add Another Point
+            </Button>
+          </div>
+
+          <Button
+            className="w-full mt-6 flex items-center justify-center gap-2 text-lg rounded-xl"
+            onClick={handleGenerate}
+          >
+            Generate Path <ChevronRight size={20} />
+          </Button>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}

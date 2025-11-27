@@ -6,7 +6,7 @@ public class DistanceCalculator
     public static double feet(Node a, Node b) {
         boolean validLocationPair = false;
         for(String location : a.connections) {
-            System.out.println(location);
+            //System.out.println(location);
             if(location.equals(b.name)) {
                 validLocationPair = true;
             }

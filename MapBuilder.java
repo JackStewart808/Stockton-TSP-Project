@@ -76,9 +76,7 @@ public class MapBuilder {
         return map;
     }
 
-    /**
-     * Helper function to split a CSV line safely
-     */
+    //Helper function to split a CSV line safely
     private static List<String> splitCsvLine(String line) {
         List<String> result = new ArrayList<>();
         StringBuilder current = new StringBuilder();

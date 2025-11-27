@@ -1,5 +1,5 @@
 WKT,name,description
-"APOINT (-74.5298027 39.4933532)",_WING_MAIN,0, A_WING_ENTRANCE:B_WING_MAIN:Exit_Stairs_A:Inside_B_Stairs
+"POINT (-74.5298027 39.4933532)",A_WING_MAIN,0, A_WING_ENTRANCE:B_WING_MAIN:Exit_Stairs_A:Inside_B_Stairs
 "POINT (-74.5289937 39.4933873)",Entrance_AaS,0,Shuttle_Drop_Off:College_Walk_A:A_WING_ENTRANCE
 "POINT (-74.5296845 39.4933526)",A_WING_ENTRANCE,0,A_WING_MAIN:College_Walk_B:Exit_Stairs_A
 "POINT (-74.5300134 39.4933424)",B_WING_MAIN,0-1, B_Wing_Entrance:Inside_B_Stairs:Einstein_Bros_Entrance:C_WING_MAIN

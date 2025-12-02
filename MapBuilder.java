@@ -15,14 +15,13 @@ public class MapBuilder {
     public void buildMap(String csvFile) {
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             String line;
-            boolean skipHeader = true;
             boolean pointsDone = false;
             //Loop that iterates over lines in txt file
             while((line = br.readLine()) != null) {
-                if (skipHeader) {
-                    skipHeader = false;
+                if(line.charAt(0) != '\"') {
                     continue;
                 }
+                
                 //Import Points
                 if(line.charAt(1) == 'P') {
                     if(pointsDone) {

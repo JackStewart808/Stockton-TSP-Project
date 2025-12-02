@@ -4,6 +4,10 @@ import java.util.Map;
 public class TestMapBuilder {
     public static void main(String[] args) {
         // create instance
+        String[] names = {"CsvCombinerTest1.csv", "CsvCombinerTest2.csv"};
+        CSVCombiner.combineCSVs(names, "csvCombinerTestDestination.csv");
+        CSVCombiner.sortCSV("csvCombinerTestDestination.csv");
+
         MapBuilder builder = new MapBuilder();
         builder.buildMap("simpleTestData.csv");
         
@@ -18,8 +22,6 @@ public class TestMapBuilder {
             System.out.println(node);
         }
         */
-
-       
         
         GraphBuilder testGraphBuilder = new GraphBuilder(map);
         double[][] dist = testGraphBuilder.getDistMatrix();

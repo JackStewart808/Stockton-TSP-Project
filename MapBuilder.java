@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
-import java.util.regex.*;
 
 public class MapBuilder {
 
@@ -12,7 +11,121 @@ public class MapBuilder {
         map = new HashMap<>();
     }
 
+    //read the map data from the csv and build the map
     public void buildMap(String csvFile) {
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+            String line;
+            boolean skipHeader = true;
+            boolean pointsDone = false;
+            //Loop that iterates over lines in txt file
+            while((line = br.readLine()) != null) {
+                if (skipHeader) {
+                    skipHeader = false;
+                    continue;
+                }
+                //Import Points
+                if(line.charAt(1) == 'P') {
+                    if(pointsDone) {
+                        System.out.println("A point was handled after a line");
+                    }
+
+                    String[] parts = line.split(",", 4);
+                    if (parts.length < 3) {
+                        continue; 
+                    }
+
+                    // Extract coordinates
+                    String pointPart = parts[0].trim();
+                    // Remove leading/trailing quotes if present
+                    pointPart = pointPart.replace("\"", "");
+                    // Now pointPart looks like: POINT (-74.5298027 39.4933532)
+
+                    int start = pointPart.indexOf("(");
+                    int end = pointPart.indexOf(")");
+                    if (start < 0 || end < 0) {
+                        continue;
+                    }
+
+                    String coords = pointPart.substring(start + 1, end).trim();
+                    String[] coordParts = coords.split(" ");
+                    if (coordParts.length != 2) {
+                        continue;
+                    }
+
+                    double latitude = Double.parseDouble(coordParts[0]);
+                    double longitude = Double.parseDouble(coordParts[1]);
+                    
+                    // Node name
+                    String name = parts[1].trim();
+
+                    // Floor (single digit)
+                    String floorString = parts[2].trim();
+                    boolean isStaircase;
+                    isStaircase = switch (floorString) {
+                        case "0-1" -> true;
+                        case "1-2" -> true;
+                        default -> false;
+                    };
+
+                    // Create new node with empty connections
+                    Node node = new Node(name, latitude, longitude, isStaircase, new ArrayList<>());
+
+                    map.put(name, node);
+                }
+                //Handle the lines between points
+                if(line.charAt(1) == 'L') {
+                    pointsDone = true;
+                    //Remove unwanted Characters
+                    String wantedString = "";
+                    String wantedCharacters = "-. 0123456789";
+                    for(int i = 0; i < line.length(); i++) {
+                        //Check if a character is wanted
+                        if(wantedCharacters.indexOf((line.charAt(i))) != -1) {
+                            wantedString += line.substring(i, i+1);
+                        }
+                    }
+                    String strippedString = wantedString.strip();
+                    String[] values = strippedString.split(" ");
+                    //Allow length 5 to account for numbers in line name
+                    if(values.length < 4 || values.length > 5) {
+                        System.out.println("The following line had too many coordinates\n" + line);
+                        continue;
+                    }
+                    double[] point1 = {Double.parseDouble(values[0]), Double.parseDouble(values[1])};
+                    double[] point2 = {Double.parseDouble(values[2]), Double.parseDouble(values[3])};
+                    
+                    Node node1 = getClosestNode(point1);
+                    Node node2 = getClosestNode(point2);
+
+                    node1.connections.add(node2.name);
+                    node2.connections.add(node1.name);
+                }
+            }
+        }
+        catch (IOException e) {
+            System.out.println("Error reading CSV file: " + e.getMessage());
+        }
+    }
+
+    private Node getClosestNode(double[] point) {
+        double smallestDistance = Double.MAX_VALUE;
+        double distance;
+        Node desiredNode = new Node(point);
+        Node bestNode = desiredNode;
+        for(Node node : map.values()) {
+            distance = DistanceCalculator.feet(desiredNode, node);
+            if(distance < smallestDistance) {
+                smallestDistance = distance;
+                bestNode = node;
+            }
+        }   
+        if(bestNode.equals(desiredNode)) {
+            System.out.println("No valid Node was found.");
+        }
+        return bestNode;
+    }
+    /* 
+    public void oldBuildMap(String csvFile) {
         Pattern pointPattern = Pattern.compile("POINT \\((-?[0-9.]+) (-?[0-9.]+)\\)");
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
@@ -60,7 +173,7 @@ public class MapBuilder {
                     }
                 }
 
-                Node node = new Node(name, lat, lon, floor, connections);
+                Node node = new Node(name, lat, lon, isStiarcase, connections);
                 map.put(name, node);
             }
 
@@ -68,32 +181,9 @@ public class MapBuilder {
             System.out.println("Error reading CSV file: " + e.getMessage());
         }
     }
-
-    /**
-     * Get the node map
-     */
+    */
+   
     public Map<String, Node> getMap() {
         return map;
-    }
-
-    //Helper function to split a CSV line safely
-    private static List<String> splitCsvLine(String line) {
-        List<String> result = new ArrayList<>();
-        StringBuilder current = new StringBuilder();
-        boolean insideQuotes = false;
-
-        for (int i = 0; i < line.length(); i++) {
-            char c = line.charAt(i);
-            if (c == '"') {
-                insideQuotes = !insideQuotes;
-            } else if (c == ',' && !insideQuotes) {
-                result.add(current.toString());
-                current.setLength(0);
-            } else {
-                current.append(c);
-            }
-        }
-        result.add(current.toString());
-        return result;
     }
 }

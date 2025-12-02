@@ -5,8 +5,9 @@ public class TestMapBuilder {
     public static void main(String[] args) {
         // create instance
         MapBuilder builder = new MapBuilder();
-        builder.buildMap("simpleTestData.csv"); // load CSV
-
+        builder.buildMap("simpleTestData.csv");
+        
+        
         // get the map
         Map<String, Node> map = builder.getMap();
 
@@ -25,12 +26,15 @@ public class TestMapBuilder {
         int[][] next = testGraphBuilder.getNextMatrix();
         FloydWarshall.compute(dist, next);
 
+        System.out.println(builder.getMap().values());
 
         for(int i = 0; i < 4; i++) {
             for(int j = 0; j < 4; j++) {
                 List<Integer> pathList = FloydWarshall.getPath(i, j, next);
-                for(int index : pathList) {
-                    System.out.print(testGraphBuilder.getIndex().get(index));
+                if(pathList != null) {
+                    for(int index : pathList) {
+                        System.out.print(testGraphBuilder.getIndex().get(index));
+                    }
                 }
                 System.out.println(": " + java.lang.Math.round(dist[i][j]));
             }

@@ -4,17 +4,6 @@ public class DistanceCalculator
     static final double METERS_TO_FEET = 3.28084;
 
     public static double feet(Node a, Node b) {
-        boolean validLocationPair = false;
-        for(String location : a.connections) {
-            //System.out.println(location);
-            if(location.equals(b.name)) {
-                validLocationPair = true;
-            }
-        }
-        if(!validLocationPair) {
-            return -1;
-        }
-
         double lat1 = Math.toRadians(a.latitude);
         double lon1 = Math.toRadians(a.longitude);
         double lat2 = Math.toRadians(b.latitude);

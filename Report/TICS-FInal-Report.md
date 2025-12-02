@@ -1,4 +1,4 @@
-# Topics in Computer Science: Applied Evolutionary Computation Final Project Report
+# Topics in Computer Science: Applied Evolutionary Computation Stockton TSP Project Report
 
 ###### Team Members: Jack Stewart, Sajjad Haider, Matthew Houseworth, Kyle McFadden and Justin Murphy
 

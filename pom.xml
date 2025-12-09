@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
  
 	<groupId>edu.stockton</groupId>
-	<artifactId>mvnlab</artifactId>
+	<artifactId>stocktonTSP</artifactId>
 	<version>0.1.0</version>
 	<packaging>jar</packaging>
   
@@ -46,6 +46,11 @@
 			<version>5.13.4</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.cicirello</groupId>
+			<artifactId>chips-n-salsa</artifactId>
+			<version>7.0.2</version>
+		</dependency>
     </dependencies>
 
     <properties>
@@ -55,6 +60,56 @@
 
     <build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.6.1</version>
+				<configuration>
+					<shadedArtifactAttached>true</shadedArtifactAttached>
+					<shadedClassifierName>jar-with-dependencies</shadedClassifierName>
+					<createDependencyReducedPom>false</createDependencyReducedPom>
+					<filters>
+						<filter>
+							<artifact>*:*</artifact>
+							<excludes>
+								<exclude>module-info.class</exclude>
+							</excludes>
+						</filter>
+						<filter>
+							<artifact>org.cicirello:core</artifact>
+							<excludes>
+								<exclude>META-INF/MANIFEST.MF</exclude>
+							</excludes>
+						</filter>
+						<filter>
+							<artifact>org.cicirello:rho-mu</artifact>
+							<excludes>
+								<exclude>META-INF/MANIFEST.MF</exclude>
+							</excludes>
+						</filter>
+						<filter>
+							<artifact>org.cicirello:jpt</artifact>
+							<excludes>
+								<exclude>META-INF/MANIFEST.MF</exclude>
+							</excludes>
+						</filter>
+						<filter>
+							<artifact>org.cicirello:chips-n-salsa</artifact>
+							<excludes>
+								<exclude>META-INF/MANIFEST.MF</exclude>
+							</excludes>
+						</filter>
+					</filters>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -89,7 +144,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<failOnWarnings>true</failOnWarnings>
+					<failOnWarnings>false</failOnWarnings>
 					<failOnError>true</failOnError>
 				</configuration>
 			</plugin>

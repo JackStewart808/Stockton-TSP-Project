@@ -13,23 +13,40 @@ Since it will be used by both new and older students alike, we made sure to make
 
 - The user can insert different sections and entrances into a dropdown menu.
 - The dropdown menu will have a **START** and a **STOP** bar for the start and ending destinations that they request.
-- 
-- This is where we Describe in detail what actually happens with the Website.
+- An additional dropdown menu to add multiple more points to the map
+- A button to continue forward to the next webpage
+- A webpage that shows the points from **START** and **STOP** on the previous webpage
+- The ability to zoom in and out of the map
+- A button to go backwards to the previous webpage
 
 ## Software Architecture: 
 - This is where the high level architecture will be.
-- Did we use a specific design pattern? Which one if so?
-- What are the main components?
-- What are their roles?
+- There was no specific design pattern in mind when starting this project, however it was known from the start that we were going to use a TSP while integrating components of the Floyd-Warshall method.
+- The main components of the software are:
+    - A Maven build
+    - Floyd-Warshall
+    - Traveling Salesperson Problem (TSP Problem)
+    - A Distance Calculator
+- The roles of the Software are:
+    - Maven 
+    - Floyd-Warshall
+    - TSP
+    - The Distance Calculator calculates the distance that a person will need to travel from the Lattitude and Longitude and changes it to feet for the User.
 - How do they interact?
 - Diagram is useful**
 
 
-- **Possibility of a user guide.** 
-
 ## Conclusion:
 
-**What we learned goes here.**
+This needs to be done when the website is completely finished and operable.**
+I'll be trying to do this while making a simplistic User Guide in a seperate file.
+I'll also be adding pictures to this Report.
 
 ## Resources:
-- Listed resources.
+- [*Chips-n-Salsa*](https://chips-n-salsa.cicirello.org)
+- [*Google My Maps*](https://www.google.com/maps/d/u/0/edit?mid=1j8Kd5MHKXVnJ9r8asANea8p6HhQWOuY&ll=39.49153912615076%2C-74.53232598664172&z=17)
+- [*Markdown Guide*](https://www.markdownguide.org/basic-syntax/)
+- [*Markdown Live Preview*](https://markdownlivepreview.com)
+- [Stockton University Website](https://www.stockton.edu)
+     - [*Stockton University* Map](https://stockton.edu/maps/documents/stocktonmap.pdf)
+- 

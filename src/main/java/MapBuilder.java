@@ -16,97 +16,86 @@ public class MapBuilder {
     try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
       String line;
       boolean pointsDone = false;
-      // Loop that iterates over lines in txt file
-      while ((line = br.readLine()) != null) {
-        if (line.charAt(0) != '\"') {
-          continue;
-        }
 
-        // Import Points
+      while ((line = br.readLine()) != null) {
+        if (line.isEmpty() || line.charAt(0) != '"') continue;
+
+        // =====================
+        // POINT rows
+        // =====================
         if (line.charAt(1) == 'P') {
           if (pointsDone) {
-            System.out.println("A point was handled after a line");
+            System.out.println("Warning: POINT found after LINE");
           }
 
           String[] parts = line.split(",", 4);
-          if (parts.length < 3) {
-            continue;
-          }
+          if (parts.length < 3) continue;
 
-          // Extract coordinates
-          String pointPart = parts[0].trim();
-          // Remove leading/trailing quotes if present
-          pointPart = pointPart.replace("\"", "");
-          // Now pointPart looks like: POINT (-74.5298027 39.4933532)
+          String pointPart = parts[0].replace("\"", "").trim();
 
           int start = pointPart.indexOf("(");
           int end = pointPart.indexOf(")");
-          if (start < 0 || end < 0) {
-            continue;
-          }
+          if (start < 0 || end < 0) continue;
 
-          String coords = pointPart.substring(start + 1, end).trim();
-          String[] coordParts = coords.split(" ");
-          if (coordParts.length != 2) {
-            continue;
-          }
+          String[] coordParts = pointPart.substring(start + 1, end).trim().split(" ");
+          if (coordParts.length != 2) continue;
 
           double latitude = Double.parseDouble(coordParts[0]);
           double longitude = Double.parseDouble(coordParts[1]);
 
-          // Node name
           String name = parts[1].trim();
-
-          // Floor (single digit)
           String floorString = parts[2].trim();
-          boolean isStaircase;
-          isStaircase =
-              switch (floorString) {
-                case "0-1" -> true;
-                case "1-2" -> true;
-                default -> false;
-              };
 
-          // Create new node with empty connections
-          Node node = new Node(name, latitude, longitude, isStaircase, new ArrayList<>());
+          boolean isStaircase = floorString.equals("0-1") || floorString.equals("1-2");
 
-          map.put(name, node);
+          map.put(name, new Node(name, latitude, longitude, isStaircase, new ArrayList<>()));
         }
-        // Handle the lines between points
-        if (line.charAt(1) == 'L') {
 
+        // =====================
+        // LINE rows
+        // =====================
+        else if (line.charAt(1) == 'L') {
           pointsDone = true;
 
-          // Split CSV line into WKT, name, description
+          // Split CSV into WKT, name, description
           String[] csvParts = line.split(",", 3);
           String description = csvParts.length >= 3 ? csvParts[2].replace("\"", "").trim() : "";
 
-          // Extract numeric coordinates from WKT
-          String wantedString = "";
-          String wantedCharacters = "-. 0123456789";
-          for (int i = 0; i < line.length(); i++) {
-            if (wantedCharacters.indexOf(line.charAt(i)) != -1) {
-              wantedString += line.charAt(i);
-            }
+          // Proper LINESTRING parsing
+          int start = line.indexOf("(");
+          int end = line.indexOf(")");
+          if (start < 0 || end < 0) continue;
+
+          String coordsOnly = line.substring(start + 1, end);
+          String[] pairs = coordsOnly.split(",");
+
+          if (pairs.length != 2) {
+            System.out.println("Skipping malformed LINE: " + line);
+            continue;
           }
 
-          String[] values = wantedString.strip().split(" ");
+          double[] point1;
+          double[] point2;
 
-          if (values.length < 4) {
-            System.out.println("Bad LINE row: " + line);
-            return;
+          try {
+            String[] p1 = pairs[0].trim().split(" ");
+            String[] p2 = pairs[1].trim().split(" ");
+
+            point1 = new double[] {Double.parseDouble(p1[0]), Double.parseDouble(p1[1])};
+
+            point2 = new double[] {Double.parseDouble(p2[0]), Double.parseDouble(p2[1])};
+          } catch (Exception e) {
+            System.out.println("Skipping bad LINE coords: " + line);
+            continue;
           }
 
-          double[] point1 = {Double.parseDouble(values[0]), Double.parseDouble(values[1])};
-
-          double[] point2 = {Double.parseDouble(values[2]), Double.parseDouble(values[3])};
-
-          // If description explicitly defines endpoints, use it
+          // Description-defined endpoints override geometry
           if (description.contains("->")) {
             connectUsingDescription(description);
           } else {
             Node node1 = getClosestNode(point1);
             Node node2 = getClosestNode(point2);
+
             node1.connections.add(node2.name);
             node2.connections.add(node1.name);
           }
@@ -151,6 +140,10 @@ public class MapBuilder {
       a.connections.add(b.name);
       b.connections.add(a.name);
     }
+  }
+
+  private double parseCleanDouble(String s) {
+    return Double.parseDouble(s.replaceAll("[^0-9.-]", ""));
   }
 
   /*

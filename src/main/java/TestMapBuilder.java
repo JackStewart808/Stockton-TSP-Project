@@ -7,18 +7,21 @@ public class TestMapBuilder {
     // String[] names = {"CsvCombinerTest1.csv", "CsvCombinerTest2.csv"};
 
     String[] names = {
-      "Stockton TSP Project 5- MAIN (00s).csv",
-      "Stockton TSP Project 5- LAYER 2 (100s).csv",
-      "Stockton TSP Project 5- LAYER 3 (200s).csv",
-      "Stockton TSP Project 5- Stairways.csv",
-      "Stockton TSP Project 5- Academic Spine Walk.csv",
-      "Stockton TSP Project 5- Lines.csv"
+      "src/main/resources/Stockton TSP Project 5- MAIN (00s).csv",
+      "src/main/resources/Stockton TSP Project 5- LAYER 2 (100s).csv",
+      "src/main/resources/Stockton TSP Project 5- LAYER 3 (200s).csv",
+      "src/main/resources/Stockton TSP Project 5- Stairways.csv",
+      "src/main/resources/Stockton TSP Project 5- Academic Spine Walk.csv",
+      "src/main/resources/Stockton TSP Project 5- Lines.csv"
     };
-    CSVCombiner.combineCSVs(names, "csvCombinerTestDestination.csv");
-    CSVCombiner.sortCSV("csvCombinerTestDestination.csv");
+
+    String output = "src/main/resources/csvCombinerTestDestination.csv";
+
+    CSVCombiner.combineCSVs(names, output);
+    CSVCombiner.sortCSV(output);
 
     MapBuilder builder = new MapBuilder();
-    builder.buildMap("src/main/resources/csvCombinerTestDestination.csv");
+    builder.buildMap(output);
 
     // get the map
     Map<String, Node> map = builder.getMap();

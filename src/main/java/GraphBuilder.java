@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 public class GraphBuilder {
 
@@ -8,6 +11,21 @@ public class GraphBuilder {
   private final int[][] next; // For path reconstruction
 
   public static final double INF = Double.POSITIVE_INFINITY;
+
+  public static double[][] buildSubMatrix(double[][] dist, List<Integer> indices) {
+    int n = indices.size();
+    double[][] sub = new double[n][n];
+
+    for (int i = 0; i < n; i++) {
+      int origI = indices.get(i);
+      for (int j = 0; j < n; j++) {
+        int origJ = indices.get(j);
+        sub[i][j] = dist[origI][origJ];
+      }
+    }
+
+    return sub;
+  }
 
   public GraphBuilder(Map<String, Node> map) {
     this.map = map;

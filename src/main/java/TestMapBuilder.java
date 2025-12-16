@@ -9,7 +9,7 @@ public class TestMapBuilder {
     CSVCombiner.sortCSV("csvCombinerTestDestination.csv");
 
     MapBuilder builder = new MapBuilder();
-    builder.buildMap("simpleTestData.csv");
+    builder.buildMap("src/main/resources/csvCombinerTestDestination.csv");
 
     // get the map
     Map<String, Node> map = builder.getMap();
@@ -26,6 +26,13 @@ public class TestMapBuilder {
     double[][] dist = testGraphBuilder.getDistMatrix();
     int[][] next = testGraphBuilder.getNextMatrix();
     FloydWarshall.compute(dist, next);
+
+    int[] solution = TSPRunner.solveTSP(dist);
+
+    for (int i = 0; i < solution.length; i++) {
+      System.out.print(testGraphBuilder.getIndex().get((solution[i])));
+    }
+    System.out.println("\n");
 
     System.out.println(builder.getMap().values());
 

@@ -21,7 +21,7 @@ public class TestMapBuilder {
         System.out.println(node);
     }
     */
-
+    //test
     GraphBuilder testGraphBuilder = new GraphBuilder(map);
     double[][] dist = testGraphBuilder.getDistMatrix();
     int[][] next = testGraphBuilder.getNextMatrix();

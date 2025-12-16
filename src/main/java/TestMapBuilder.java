@@ -4,7 +4,7 @@ import java.util.Map;
 public class TestMapBuilder {
   public static void main(String[] args) {
     // create instance
-    //String[] names = {"CsvCombinerTest1.csv", "CsvCombinerTest2.csv"};
+    // String[] names = {"CsvCombinerTest1.csv", "CsvCombinerTest2.csv"};
 
     String[] names = {
       "Stockton TSP Project 5- MAIN (00s).csv",

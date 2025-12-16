@@ -11,16 +11,16 @@ Since it will be used by both new and older students alike, we made sure to make
 
 ## Functionality:
 
-- The user can insert different sections and entrances into a dropdown menu.
-- The dropdown menu will have a **START** and a **STOP** bar for the start and ending destinations that they request.
-- An additional dropdown menu to add multiple more points to the map
-- A button to continue forward to the next webpage
-- A webpage that shows the points from **START** and **STOP** on the previous webpage
+- The user can insert different sections and entrances into a small menu with all of the points.
+- The  menu will have an **ADD POINT** button to add a point for the Route Builder.
+- The menu will have a **CLEAR PATH** button to clear all of the points on the path made.
+- The menu will have a **CALCULATE PATH** button to show the points and the distances between.
+- A small window will pop up after the **CALCULATE PATH** button has been pressed to show the distance between points and the total distance.
+- A small informative section below the **CALCULATE PATH** button that shows the path that is being taken.
 - The ability to zoom in and out of the map
-- A button to go backwards to the previous webpage
+- A bar at the top to filter through points.
 
 ## Software Architecture: 
-- This is where the high level architecture will be.
 - There was no specific design pattern in mind when starting this project, however it was known from the start that we were going to use a TSP while integrating components of the Floyd-Warshall method.
 - The main components of the software are:
     - A Maven build
@@ -28,20 +28,17 @@ Since it will be used by both new and older students alike, we made sure to make
     - Traveling Salesperson Problem (TSP Problem)
     - A Distance Calculator
 - The roles of the Software are:
-    - Maven 
-    - Floyd-Warshall
-    - TSP
-    - The Distance Calculator calculates the distance that a person will need to travel from the Lattitude and Longitude and changes it to feet for the User.
-- How do they interact?
-- Diagram is useful**
+    - **Maven**: A Project Managment and build tool that simplifies and automates different processes, including downloading dependicies that might be needed for the project to run.
+    - **Floyd-Warshall**: A progamming algorithm that finds the shortest paths between all pairs of vertices in a weighted graph, handling positive or negative edge weights. It will then return a distance matrix containing the shortest path and their lengths between each vertices that were used in the graph.
+    - **TSP**: Otherwise known as the 'Travelling Salesperson Problem', this is also an algorithm to find the shortest possible route, but visits a node only *once* before returning to the starting node. This, combined with the Floyd-Warshall Algorithm will show the shortest possible lengths between nodes and the fastest possible route throughout campus.
+    - **The Distance Calculator**: This calculates the distance that a person will need to travel from the Lattitude and Longitude and changes it to feet for the User.
 
 
 ## Conclusion:
 
-This needs to be done when the website is completely finished and operable.**
-I'll be trying to do this while making a simplistic User Guide in a seperate file.
-I'll also be adding pictures to this Report.
+This project was very interesting for all of us to process and try to work through. Due to the nature of the semester, we tried to do something a bit more simplistic than what we actually achieved to do due to time constraints, but it was still extremely close to the wire on a finished product. There was much to learn, including the addition of Maven, the Spotify POM files for simplicity and simplifying, trying our hand at mixing both a TSP and Floydd-Warshall method together to combine into a total calculator for the Stockon Campus. Additionally, just how many doors and entrances the Stockton Campus actually has was eye-opening.
 
+We continuously stated during the project that our goal was to do the whole campus, including the science wings and all of the main campis building, however, due to the time constraints of it being within the course time, and due to other classes also taking up a majority of our time, we had to cut a significant chunk of what we were willing to do. Other than the time constraints, the project was an extremely informative and knowledgeable dig into how to use the *Chips-n-Salsa* resource and the algorithms inside.
 ## Resources:
 - [*Chips-n-Salsa*](https://chips-n-salsa.cicirello.org)
 - [*Google My Maps*](https://www.google.com/maps/d/u/0/edit?mid=1j8Kd5MHKXVnJ9r8asANea8p6HhQWOuY&ll=39.49153912615076%2C-74.53232598664172&z=17)
@@ -49,4 +46,3 @@ I'll also be adding pictures to this Report.
 - [*Markdown Live Preview*](https://markdownlivepreview.com)
 - [Stockton University Website](https://www.stockton.edu)
      - [*Stockton University* Map](https://stockton.edu/maps/documents/stocktonmap.pdf)
-- 

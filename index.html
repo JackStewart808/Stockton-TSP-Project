@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stockton TSP Frontend</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="layout">
+    <main class="panel" id="leftPanel">
+      <h1>TSP Route Builder</h1>
+
+      <label for="pointSearch">Search points</label>
+      <input id="pointSearch" type="text" placeholder="Type to filter points"/>
+
+      <label for="pointSelect">Select a point</label>
+      <select id="pointSelect" size="6"></select>
+
+      <div class="row">
+        <button id="addPointBtn" type="button">Add point</button>
+        <button id="clearBtn" type="button">Clear path</button>
+      </div>
+
+      <button id="calcBtn" type="button">Calculate path</button>
+
+      <h2>Current path</h2>
+      <ol id="pathList"></ol>
+    </main>
+
+    <aside class="panel hidden" id="resultPanel">
+      <h1>Calculated Path</h1>
+      <!--Fill this with time, distance, whatever results you want-->
+      <div id="resultContent" class="placeholder">
+        (nothing)
+      </div>
+    </aside>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

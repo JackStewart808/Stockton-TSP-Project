@@ -20,7 +20,6 @@ Since it will be used by both new and older students alike, we made sure to make
 - A button to go backwards to the previous webpage
 
 ## Software Architecture: 
-- This is where the high level architecture will be.
 - There was no specific design pattern in mind when starting this project, however it was known from the start that we were going to use a TSP while integrating components of the Floyd-Warshall method.
 - The main components of the software are:
     - A Maven build
@@ -28,12 +27,10 @@ Since it will be used by both new and older students alike, we made sure to make
     - Traveling Salesperson Problem (TSP Problem)
     - A Distance Calculator
 - The roles of the Software are:
-    - Maven 
-    - Floyd-Warshall
-    - TSP
-    - The Distance Calculator calculates the distance that a person will need to travel from the Lattitude and Longitude and changes it to feet for the User.
-- How do they interact?
-- Diagram is useful**
+    - **Maven**: A Project Managment and build tool that simplifies and automates different processes, including downloading dependicies that might be needed for the project to run.
+    - **Floyd-Warshall**: A progamming algorithm that finds the shortest paths between all pairs of vertices in a weighted graph, handling positive or negative edge weights. It will then return a distance matrix containing the shortest path and their lengths between each vertices that were used in the graph.
+    - **TSP**: Otherwise known as the 'Travelling Salesperson Problem', this is also an algorithm to find the shortest possible route, but visits a node only *once* before returning to the starting node. This, combined with the Floyd-Warshall Algorithm will show the shortest possible lengths between nodes and the fastest possible route throughout campus.
+    - **The Distance Calculator**: This calculates the distance that a person will need to travel from the Lattitude and Longitude and changes it to feet for the User.
 
 
 ## Conclusion:
@@ -49,4 +46,3 @@ I'll also be adding pictures to this Report.
 - [*Markdown Live Preview*](https://markdownlivepreview.com)
 - [Stockton University Website](https://www.stockton.edu)
      - [*Stockton University* Map](https://stockton.edu/maps/documents/stocktonmap.pdf)
-- 

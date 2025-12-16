@@ -1,0 +1,18 @@
+WKT,name,description
+"POINT (-74.5313182 39.4922777)",CC- Back Entr 2,(100s-200s)
+"POINT (-74.5289258 39.4933946)",Shuttle_Drop_Off,0,Entrance_AaS:College_Walk_A
+"POINT (-74.5288937 39.4929506)",College_Walk_A,0,Entrance_AaS:Shuttle_Drop_Off
+"POINT (-74.5296471 39.4929397)",College_Walk_B,0,College_Walk_A:Lower_00s_Entrance_A:B_Wing_Entrance
+"POINT (-74.5300512 39.492933)",College_Walk_C,0, B_Wing_Entrance:College_Walk_B:College_Walk_D:Out_Stairs_B
+"POINT (-74.5303546 39.4929245)",College_Walk_D,0,College_Walk_C:College_Walk_E:Einstein_Bros_Entrance:Exit_Stairs_C
+"POINT (-74.5307152 39.4930368)",College_Walk_E,0,D_WING_ENTRANCE_1:D_WING_ENTRANCE_2:D_WING_CONNECTOR:CONNECTOR_STAIRS_D_TO_F:College_Walk_F
+"POINT (-74.5306656 39.492923)",College_Walk_F,0,College_Walk_E:College_Walk_D:College_Walk_G:
+"POINT (-74.531098 39.4925889)",College_Walk_G,
+"POINT (-74.5314261 39.4922968)",College_Walk_H,
+"POINT (-74.531846 39.4919311)",College_Walk_I,
+"POINT (-74.5321569 39.4916805)",College_Walk_J,
+"POINT (-74.5322572 39.4915933)",College_Walk_K,
+"POINT (-74.5325087 39.4914321)",College_Walk_L,
+"POINT (-74.5331105 39.4914288)",College_Walk_M,
+"POINT (-74.5313214 39.4923899)",College_Walk_N,
+"POINT (-74.5316869 39.4920662)",College_Walk_O,

@@ -74,32 +74,52 @@ public class MapBuilder {
         }
         // Handle the lines between points
         if (line.charAt(1) == 'L') {
-          pointsDone = true;
-          // Remove unwanted Characters
-          String wantedString = "";
-          String wantedCharacters = "-. 0123456789";
-          for (int i = 0; i < line.length(); i++) {
-            // Check if a character is wanted
-            if (wantedCharacters.indexOf((line.charAt(i))) != -1) {
-              wantedString += line.substring(i, i + 1);
-            }
-          }
-          String strippedString = wantedString.strip();
-          String[] values = strippedString.split(" ");
-          // Allow length 5 to account for numbers in line name
-          if (values.length < 4 || values.length > 5) {
-            System.out.println("The following line had too many coordinates\n" + line);
-            continue;
-          }
-          double[] point1 = {Double.parseDouble(values[0]), Double.parseDouble(values[1])};
-          double[] point2 = {Double.parseDouble(values[2]), Double.parseDouble(values[3])};
 
+        pointsDone = true;
+
+        // Split CSV line into WKT, name, description
+        String[] csvParts = line.split(",", 3);
+        String description = csvParts.length >= 3
+            ? csvParts[2].replace("\"", "").trim()
+            : "";
+
+        // Extract numeric coordinates from WKT
+        String wantedString = "";
+        String wantedCharacters = "-. 0123456789";
+        for (int i = 0; i < line.length(); i++) {
+          if (wantedCharacters.indexOf(line.charAt(i)) != -1) {
+            wantedString += line.charAt(i);
+          }
+        }
+
+        String[] values = wantedString.strip().split(" ");
+
+        if (values.length < 4) {
+          System.out.println("Bad LINE row: " + line);
+          return;
+        }
+
+        double[] point1 = {
+          Double.parseDouble(values[0]),
+          Double.parseDouble(values[1])
+        };
+
+        double[] point2 = {
+          Double.parseDouble(values[2]),
+          Double.parseDouble(values[3])
+        };
+
+        // If description explicitly defines endpoints, use it
+        if (description.contains("->")) {
+          connectUsingDescription(description);
+        } else {
           Node node1 = getClosestNode(point1);
           Node node2 = getClosestNode(point2);
-
           node1.connections.add(node2.name);
           node2.connections.add(node1.name);
         }
+      }
+
       }
     } catch (IOException e) {
       System.out.println("Error reading CSV file: " + e.getMessage());
@@ -123,6 +143,25 @@ public class MapBuilder {
     }
     return bestNode;
   }
+
+  private void connectUsingDescription(String description) {
+  if (description == null || !description.contains("->")) return;
+
+  String[] parts = description.split("->");
+  if (parts.length != 2) return;
+
+  String from = parts[0].trim();
+  String to   = parts[1].trim();
+
+  Node a = map.get(from);
+  Node b = map.get(to);
+
+  if (a != null && b != null) {
+    a.connections.add(b.name);
+    b.connections.add(a.name);
+  }
+}
+
 
   /*
   public void oldBuildMap(String csvFile) {

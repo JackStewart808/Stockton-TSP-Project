@@ -62,14 +62,11 @@ public class TestMapBuilder {
 
     // System.out.println(testGraphBuilder.getIndex());
 
-    /*
     for (double[] row : dist) {
-        for(double value : row) {
-            System.out.print(value + " ");
-        }
-        System.out.println();
+      for (double value : row) {
+        System.out.print(java.lang.Math.round(value) + " ");
+      }
+      System.out.println();
     }
-        */
-
   }
 }

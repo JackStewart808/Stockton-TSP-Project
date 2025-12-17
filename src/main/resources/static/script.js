@@ -8,6 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultPanel = document.getElementById("resultPanel");
   const resultContent = document.getElementById("resultContent");
   const mapOverlay = document.getElementById("mapOverlay");
+  const lineCanvas = document.getElementById("lineCanvas");
+  const ctx = lineCanvas.getContext("2d");
+
+  lineCanvas.width = window.innerWidth;
+  lineCanvas.height = window.innerHeight;
 
   const allPoints = [
     "A-Wing (00s)", "A-Wing (100s)", 
@@ -74,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
     pathList.appendChild(li);
 
     placeDot(selected);
+    drawLines();
   });
 
   function placeDot(pointId) {
@@ -94,10 +100,30 @@ document.addEventListener("DOMContentLoaded", () => {
     mapOverlay.innerHTML = "";
   }
 
+  function drawLines() {
+    ctx.clearRect(0, 0, lineCanvas.lineCanvas.width, lineCanvas.height);
+
+    const points = Array.from(pathList.children)
+      .map(li => POINT_COORDS[li.textContent])
+      .filter(Boolean);
+
+    if (points.length < 2) return;
+
+    ctx.beginPath();
+    ctx.moveTo(points[0].x, points[0].y);
+
+    for (let i = 1; i < points.length; i++) {
+      ctx.lineTo(points[i].x, points[i].y);
+    }
+
+    ctx.stroke();
+  }
+
   // Clear path
   clearBtn.addEventListener("click", () => {
     pathList.innerHTML = "";
     clearDots();
+    ctx.clearRect(0, 0, lineCanvas.width, lineCanvas,height);
     resultContent.textContent = "(nothing)";
     resultPanel.classList.add("hidden");
   });

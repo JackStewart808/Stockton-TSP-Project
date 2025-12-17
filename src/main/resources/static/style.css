@@ -103,6 +103,11 @@ ol {
   box-shadow: 0 0 8px rgba(2, 0, 17, 0.65);
 }
 
+#lineCanvas {
+  position: absolute;
+  inset: 0;
+}
+
 @media (max-width: 900px) {
   .layout {
     flex-direction: column;

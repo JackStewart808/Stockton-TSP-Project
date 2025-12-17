@@ -4,16 +4,25 @@ import java.util.Map;
 public class TestMapBuilder {
   public static void main(String[] args) {
     // create instance
-    String[] names = {"CsvCombinerTest1.csv", "CsvCombinerTest2.csv"};
-    CSVCombiner.combineCSVs(names, "csvCombinerTestDestination.csv");
-    CSVCombiner.sortCSV("csvCombinerTestDestination.csv");
+    // String[] names = {"CsvCombinerTest1.csv", "CsvCombinerTest2.csv"};
+
+    String[] names = {
+      "src/main/resources/Stockton TSP Project 5- MAIN (00s).csv",
+      "src/main/resources/Stockton TSP Project 5- LAYER 2 (100s).csv",
+      "src/main/resources/Stockton TSP Project 5- LAYER 3 (200s).csv",
+      "src/main/resources/Stockton TSP Project 5- Stairways.csv",
+      "src/main/resources/Stockton TSP Project 5- Academic Spine Walk.csv",
+      "src/main/resources/Stockton TSP Project 5- Lines.csv"
+    };
+
+    String output = "src/main/resources/csvCombinerTestDestination.csv";
+
+    CSVCombiner.combineCSVs(names, output);
+    CSVCombiner.sortCSV(output);
 
     MapBuilder builder = new MapBuilder();
-<<<<<<< Updated upstream
-    builder.buildMap("src/main/resources/csvCombinerTestDestination.csv");
-=======
     builder.buildMap("src/main/resources/AllData.csv");
->>>>>>> Stashed changes
+    builder.buildMap(output);
 
     // get the map
     Map<String, Node> map = builder.getMap();
@@ -55,21 +64,11 @@ public class TestMapBuilder {
 
     // System.out.println(testGraphBuilder.getIndex());
 
-    /*
     for (double[] row : dist) {
-<<<<<<< Updated upstream
-        for(double value : row) {
-            System.out.print(value + " ");
-        }
-        System.out.println();
-=======
       for (double value : row) {
         //System.out.print(java.lang.Math.round(value) + " ");
       }
       //System.out.println();
->>>>>>> Stashed changes
     }
-        */
-
   }
 }

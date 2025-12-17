@@ -22,6 +22,7 @@ Since it will be used by both new and older students alike, we made sure to make
 
 ## Software Architecture: 
 - There was no specific design pattern in mind when starting this project, however it was known from the start that we were going to use a TSP while integrating components of the Floyd-Warshall method.
+- There was usage of ChatGPT in this project that helped with some ideas for some of the Front-End Conceptualization, which was not used. Additionally, it was used for most of the code in [MainServer.java](/src/main/java/MainServer.java) and some ideas were used for some other code brackets as well, but none were copied and pasted right into the file for those concepts.
 - The main components of the software are:
     - A Maven build
     - Floyd-Warshall
@@ -39,6 +40,7 @@ Since it will be used by both new and older students alike, we made sure to make
 This project was very interesting for all of us to process and try to work through. Due to the nature of the semester, we tried to do something a bit more simplistic than what we actually achieved to do due to time constraints, but it was still extremely close to the wire on what the finished product would have been. There was much to learn, including the addition of Maven, the Spotify POM files for simplicity and simplifying, trying our hand at mixing both a TSP and Floyd-Warshall method together to combine into a total calculator for the Stockon Campus. Additionally, just how many doors and entrances the Stockton Campus actually has was eye-opening.
 
 We continuously stated during the project that our goal was to do the whole campus, including the science wings and all of the main campis building, however, due to the time constraints of it being within the course time, and due to other classes also taking up a majority of our time, we had to cut a significant chunk of what we were willing to do. Other than the time constraints, the project was an extremely informative and knowledgeable dig into how to use the *Chips-n-Salsa* resource and the algorithms inside.
+
 ## Resources:
 - [*Chips-n-Salsa*](https://chips-n-salsa.cicirello.org)
 - [*Google My Maps*](https://www.google.com/maps/d/u/0/edit?mid=1j8Kd5MHKXVnJ9r8asANea8p6HhQWOuY&ll=39.49153912615076%2C-74.53232598664172&z=17)

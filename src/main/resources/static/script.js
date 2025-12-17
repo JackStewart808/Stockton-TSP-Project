@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const pathList = document.getElementById("pathList");
   const resultPanel = document.getElementById("resultPanel");
   const resultContent = document.getElementById("resultContent");
+  const mapOverlay = document.getElementById("mapOverlay");
 
   const allPoints = [
     "A-Wing (00s)", "A-Wing (100s)", 
@@ -23,6 +24,22 @@ document.addEventListener("DOMContentLoaded", () => {
     "Campus Center",
     "Performing Arts Center"
   ];
+
+  const POINT_COORDS = {
+    "A-Wing (00s)": {x: 1200, y: 150}, "A-Wing (100s)": {x: 1190, y: 140}, 
+    "B-Wing (00s)": {x: 1130, y: 150}, "B-Wing (100s)": {x: 1120, y: 140}, 
+    "C-Wing (00s)": {x: 1090, y: 145}, "C-Wing (100s)": {x: 1070, y: 130},
+    "D-Wing (00s)": {x: 1000, y: 145}, "D-Wing (100s)": {x: 980, y: 130},
+    "F-Wing (100s)": {x: 890, y: 230}, "F-Wing (200s)": {x: 860, y: 280},
+    "G-Wing (100s)": {x: 780, y: 320}, "G-Wing (200s)": {x: 760, y: 350},
+    "H-Wing (100s)": {x: 730, y: 390}, "H-Wing (200s)": {x: 710, y: 410},
+    "I-Wing (100s)": {x: 670, y: 440}, "I-Wing (200s)": {x: 650, y: 450},
+    "J-Wing (100s)": {x: 630, y: 480}, "J-Wing (200s)": {x: 610, y: 500},
+    "K-Wing (100s)": {x: 530, y: 550}, "K-Wing (200s)": {x: 500, y: 550},
+    "N-Wing (100s)": {x: 300, y: 560},
+    "Campus Center": {x: 960, y: 540},
+    "Performing Arts Center": {x: 400, y: 590}
+  }
 
   // Populate the select box
   function updateSelect(filter = "") {
@@ -55,11 +72,32 @@ document.addEventListener("DOMContentLoaded", () => {
     const li = document.createElement("li");
     li.textContent = selected;
     pathList.appendChild(li);
+
+    placeDot(selected);
   });
+
+  function placeDot(pointId) {
+    const pos = POINT_COORDS[pointId];
+    if (!pos) return; //Coords dont exist
+
+    //Dont duplicate
+    if (mapOverlay.querySelector(`.map-dot[data-id="${pointId}"]`)) return;
+    const dot = document.createElement("div");
+    dot.className = "map-dot";
+    dot.dataset.id = pointId;
+    dot.style.left = pos.x + "px";
+    dot.style.top = pos.y + "px";
+    mapOverlay.appendChild(dot);
+  }
+
+  function clearDots() {
+    mapOverlay.innerHTML = "";
+  }
 
   // Clear path
   clearBtn.addEventListener("click", () => {
     pathList.innerHTML = "";
+    clearDots();
     resultContent.textContent = "(nothing)";
     resultPanel.classList.add("hidden");
   });

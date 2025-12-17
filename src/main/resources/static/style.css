@@ -87,6 +87,22 @@ ol {
   padding-top: 6px;
 }
 
+#mapOverlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.map-dot {
+  position: absolute;
+  width: 8px;
+  height: 16px;
+  border-radius: 50%;
+  background: blue;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px rgba(2, 0, 17, 0.65);
+}
+
 @media (max-width: 900px) {
   .layout {
     flex-direction: column;

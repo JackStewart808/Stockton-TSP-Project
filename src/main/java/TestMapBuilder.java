@@ -21,18 +21,20 @@ public class TestMapBuilder {
     CSVCombiner.sortCSV(output);
 
     MapBuilder builder = new MapBuilder();
+    builder.buildMap("src/main/resources/AllData.csv");
     builder.buildMap(output);
 
     // get the map
     Map<String, Node> map = builder.getMap();
 
-    /*
-    System.out.println("=== FULL NODE MAP ===");
+    
+    System.out.println("=== FULL NODE MAP === Size" + map.keySet().size());
+
     for (String nodeName : map.keySet()) {
         Node node = map.get(nodeName);
-        System.out.println(node);
+        System.out.println(node.name);
     }
-    */
+    System.out.println("===========================================");
     // test
     GraphBuilder testGraphBuilder = new GraphBuilder(map);
     double[][] dist = testGraphBuilder.getDistMatrix();
@@ -42,7 +44,7 @@ public class TestMapBuilder {
     int[] solution = TSPRunner.solveTSP(dist);
 
     for (int i = 0; i < solution.length; i++) {
-      System.out.print(testGraphBuilder.getIndex().get((solution[i])));
+      //System.out.print(testGraphBuilder.getIndex().get((solution[i])));
     }
     System.out.println("\n");
 
@@ -64,9 +66,9 @@ public class TestMapBuilder {
 
     for (double[] row : dist) {
       for (double value : row) {
-        System.out.print(java.lang.Math.round(value) + " ");
+        //System.out.print(java.lang.Math.round(value) + " ");
       }
-      System.out.println();
+      //System.out.println();
     }
   }
 }

@@ -64,9 +64,14 @@ public class MainServer {
     // body will look like: Albany,Boston,New York
     String[] points = body.split(",");
 
-    String[] result = TSPService.solve(points);
-
-    String response = String.join(" → ", result);
+    String response;
+    try {
+      String[] result = TSPService.solve(points);
+      response = String.join(" → ", result);
+    } catch (Exception e) {
+      e.printStackTrace(); // log server-side
+      response = "Error: " + e.getMessage();
+    }
 
     byte[] bytes = response.getBytes(StandardCharsets.UTF_8);
     exchange.sendResponseHeaders(200, bytes.length);

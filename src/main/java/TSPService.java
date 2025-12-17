@@ -10,6 +10,13 @@ public class TSPService {
 
     Map<String, Node> map = builder.getMap();
 
+    System.out.println("=== Map keys ===");
+    System.out.println(map.size());
+    for (String key : map.keySet()) {
+      System.out.println(key);
+    }
+    System.out.println("================");
+
     GraphBuilder graphBuilder = new GraphBuilder(map);
     double[][] dist = graphBuilder.getDistMatrix();
     int[][] next = graphBuilder.getNextMatrix();

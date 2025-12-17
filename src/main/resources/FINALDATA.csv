@@ -1,0 +1,9 @@
+WKT,name,description
+"POINT (1 0)",A,sum
+"POINT (0 1)",B,sum
+"POINT (1 1)",C,sum
+"POINT (0 0)",D,sum
+"L 0 0 0 1
+"L 0 0 1 0
+"L 1 1 0 1
+"L 1 1 1 0

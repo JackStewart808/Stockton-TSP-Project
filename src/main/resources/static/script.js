@@ -95,11 +95,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function clearDots() {
-    mapOverlay.innerHTML = "";
+    mapOverlay.querySelectorAll(".map-dot").forEach(dot => dot.remove());
   }
 
   function drawLines() {
-    ctx.clearRect(0, 0, lineCanvas.lineCanvas.width, lineCanvas.height);
+      // Ensure canvas matches the viewport size (do this every draw)
+    if (lineCanvas.width !== window.innerWidth) lineCanvas.width = window.innerWidth;
+    if (lineCanvas.height !== window.innerHeight) lineCanvas.height = window.innerHeight;
+
+    ctx.clearRect(0, 0, lineCanvas.width, lineCanvas.height);
 
     const points = Array.from(pathList.children)
       .map(li => POINT_COORDS[li.textContent])
@@ -114,6 +118,8 @@ document.addEventListener("DOMContentLoaded", () => {
       ctx.lineTo(points[i].x, points[i].y);
     }
 
+    ctx.lineWidth = 3;       // helps visibility
+    ctx.strokeStyle = "red"; // TEMP for debugging; change later if you want
     ctx.stroke();
   }
 

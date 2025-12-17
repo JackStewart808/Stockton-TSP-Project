@@ -8,7 +8,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultPanel = document.getElementById("resultPanel");
   const resultContent = document.getElementById("resultContent");
 
+<<<<<<< Updated upstream
   const allPoints = ["A", "B", "C", "D"];
+=======
+  const allPoints = [
+    "A-Wing(00s)", "A-Wing(100s)", 
+    "B-Wing(00s)", "B-Wing(100s)", 
+    "C-Wing(00s)", "C-Wing(100s)",
+    "D-Wing(00s)", "D-Wing(100s)",
+    "F-Wing(100s)", "F-Wing(200s)",
+    "G-Wing(100s)", "G-Wing(200s)",
+    "H-Wing(100s)", "H-Wing(200s)",
+    "I-Wing(100s)", "I-Wing(200s)",
+    "J-Wing(100s)", "J-Wing(200s)",
+    "K-Wing(100s)", "K-Wing(200s)",
+    "K-Wing(100s)",
+    "N-Wing(100s)",
+    "Campus_Center"
+  ];
+>>>>>>> Stashed changes
 
   // Populate the select box
   function updateSelect(filter = "") {

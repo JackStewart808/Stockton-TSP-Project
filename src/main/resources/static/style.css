@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+}
+  
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+
+  /* Map background */
+  background-image: url("images/tspmap.PNG");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 24px;
+}
+
+.panel {
+  width: min(250px, 33vw);
+  margin: 0px;
+  padding: 16px 18px;
+  border-radius: 12px;
+
+  background: rgba(0, 0, 0, 0.65);
+  color: white;
+  backdrop-filter: blur(4px);
+}
+
+label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+input, select, button {
+  width: 100%;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+}
+
+input {
+  padding: 8px;
+}
+
+select {
+  padding: 8px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.row button {
+  width: 50%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+ol {
+  margin-top: 10px;
+  padding-left: 22px;
+}
+
+.result {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.hidden {
+  display: none;
+}
+
+.placeholder {
+  opacity: 0.75;
+  padding-top: 6px;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .panel {
+    width: min(520px, 92vw);
+  }
+}

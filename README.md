@@ -58,5 +58,5 @@ java -cp target/stocktonTSP-0.1.0-jar-with-dependencies.jar TestMapBuilder
 This is the output that the website map *SHOULD* show, just not as clean and neat.
 
 
-**A [Report](Report/TICS-FInal-Report.md) of all implementation and steps processed is located in the Report Folder.**
+**A [Report](/Documentation/TICS-FInal-Report.md) of all implementation and steps processed is located in the Report Folder.**
 

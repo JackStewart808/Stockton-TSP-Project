@@ -2,9 +2,13 @@
 A TSP implementation across the Stockton University Campus, designed to recommend routes based on scheduling requirements.
 
 
-**To launch website (IN THEORY):**
+**To launch website:**
 
-When you first launch the Index.html file, this is what will appear.
+To start, please run the [MainServer.java](/src/main/java/MainServer.java) file.
+
+![AfterDonePrt1]( /Documentation/Pictures/Launch-Server.png "This is the normal message for the output.")
+
+Go into your Browser of choice and run [this link](http://localhost:8080) and it should bring you right to the homepage.
 
 ![The initial index page with some random points for reference.](/Documentation/Pictures/Main-Index.png "This is just a sample image that was before the initial points. There will be different points for the actual campus for you.")
 
@@ -25,37 +29,6 @@ You can then either add more points, or you can press 'Calculate Path which will
 ![This is where we put the FINAL feet estimation screenshot.](/ "")
 
 Or you can press the 'Clear Path' button, which will clear the entire path.
-
-
-***IF JAVA IS STILL DISCONNECTED:***
-
-Go into the Terminal and type in:
-```
-cd .../Stockton-TSP-Project
-```
-So that you are in the folder and reading the contents.
-
-![In Case SS1](/Documentation/Pictures/In-Case-SS1.png "This is just to show how to access the folder from command prompt.")
-
-Then after you're in the folder, type:
-
-```
-mvn clean package
-```
-
-You should then get a message like this:
-
-![Message-Incase-1](/Documentation/Pictures/InCase-2-Build-Success.png "Build Sucess for a Maven clean install and to make sure it's still able to run.")
-
-Afterwards you should run this command:
-
-```
-java -cp target/stocktonTSP-0.1.0-jar-with-dependencies.jar TestMapBuilder
-```
-
-![Final Output](/Documentation/Pictures/InCase-3-NoWeb.png)]
-
-This is the output that the website map *SHOULD* show, just not as clean and neat.
 
 
 **A [Report](/Documentation/TICS-FInal-Report.md) of all implementation and steps processed is located in the Report Folder.**

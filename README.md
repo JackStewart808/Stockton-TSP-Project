@@ -22,13 +22,15 @@ You can select multiple different points, to show from where you're coming from 
 
 ![After clicking...](/Documentation/Pictures/After-Clicking.png "Buffalo and New York were added")
 
-I have added 'Buffalo' and 'New York' to the list by Clicking the name, and then clicking the 'Add Point' Button.
+I have added 'A' and 'D' to the list by clicking the name, and then clicking the 'Add Point' Button.
 
-You can then either add more points, or you can press 'Calculate Path which will output the points and tell you the total Feet that will be needed to travel:
+You can then either add more points, or you can press 'Calculate Path' which will output the points and tell you the total Feet that will be needed to travel:
 
-![This is where we put the FINAL feet estimation screenshot.](/ "")
+![Final Submission Screenshot](/Documentation/Pictures/Final-SS.png "These points will be actual names for you!")
 
-Or you can press the 'Clear Path' button, which will clear the entire path.
+As you can see, it tells us to go from C -> D -> A instead of the route we were taking before.
+
+You can then press the 'Clear Path' button, which will clear the entire path, or add addition points to go to the next place you must attend.
 
 
 **A [Report](/Documentation/TICS-FInal-Report.md) of all implementation and steps processed is located in the Report Folder.**

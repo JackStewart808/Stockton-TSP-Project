@@ -6,7 +6,7 @@ public class TSPService {
 
   public static String[] solve(String[] points) {
     MapBuilder builder = new MapBuilder();
-    builder.buildMap("src/main/resources/AllData.csv");
+    builder.buildMap("src/main/resources/FINALDATA.csv");
 
     Map<String, Node> map = builder.getMap();
 

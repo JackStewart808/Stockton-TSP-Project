@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "I-Wing(100s)", "I-Wing(200s)",
     "J-Wing(100s)", "J-Wing(200s)",
     "K-Wing(100s)", "K-Wing(200s)",
-    "K-Wing(100s)",
     "N-Wing(100s)",
     "Campus_Center"
   ];
@@ -30,36 +29,19 @@ document.addEventListener("DOMContentLoaded", () => {
   lineCanvas.width = window.innerWidth;
   lineCanvas.height = window.innerHeight;
 
-  const allPoints = [
-    "A-Wing (00s)", "A-Wing (100s)", 
-    "B-Wing (00s)", "B-Wing (100s)", 
-    "C-Wing (00s)", "C-Wing (100s)",
-    "D-Wing (00s)", "D-Wing (100s)",
-    "F-Wing (100s)", "F-Wing (200s)",
-    "G-Wing (100s)", "G-Wing (200s)",
-    "H-Wing (100s)", "H-Wing (200s)",
-    "I-Wing (100s)", "I-Wing (200s)",
-    "J-Wing (100s)", "J-Wing (200s)",
-    "K-Wing (100s)", "K-Wing (200s)",
-    "N-Wing (100s)",
-    "Campus Center",
-    "Performing Arts Center"
-  ];
-
   const POINT_COORDS = {
-    "A-Wing (00s)": {x: 1200, y: 150}, "A-Wing (100s)": {x: 1190, y: 140}, 
-    "B-Wing (00s)": {x: 1130, y: 150}, "B-Wing (100s)": {x: 1120, y: 140}, 
-    "C-Wing (00s)": {x: 1090, y: 145}, "C-Wing (100s)": {x: 1070, y: 130},
-    "D-Wing (00s)": {x: 1000, y: 145}, "D-Wing (100s)": {x: 980, y: 130},
-    "F-Wing (100s)": {x: 890, y: 230}, "F-Wing (200s)": {x: 860, y: 280},
-    "G-Wing (100s)": {x: 780, y: 320}, "G-Wing (200s)": {x: 760, y: 350},
-    "H-Wing (100s)": {x: 730, y: 390}, "H-Wing (200s)": {x: 710, y: 410},
-    "I-Wing (100s)": {x: 670, y: 440}, "I-Wing (200s)": {x: 650, y: 450},
-    "J-Wing (100s)": {x: 630, y: 480}, "J-Wing (200s)": {x: 610, y: 500},
-    "K-Wing (100s)": {x: 530, y: 550}, "K-Wing (200s)": {x: 500, y: 550},
-    "N-Wing (100s)": {x: 300, y: 560},
-    "Campus Center": {x: 960, y: 540},
-    "Performing Arts Center": {x: 400, y: 590}
+    "A-Wing(00s)": {x: 1200, y: 150}, "A-Wing(100s)": {x: 1190, y: 140}, 
+    "B-Wing(00s)": {x: 1130, y: 150}, "B-Wing(100s)": {x: 1120, y: 140}, 
+    "C-Wing(00s)": {x: 1090, y: 145}, "C-Wing(100s)": {x: 1070, y: 130},
+    "D-Wing(00s)": {x: 1000, y: 145}, "D-Wing(100s)": {x: 980, y: 130},
+    "F-Wing(100s)": {x: 890, y: 230}, "F-Wing(200s)": {x: 860, y: 280},
+    "G-Wing(100s)": {x: 780, y: 320}, "G-Wing(200s)": {x: 760, y: 350},
+    "H-Wing(100s)": {x: 730, y: 390}, "H-Wing(200s)": {x: 710, y: 410},
+    "I-Wing(100s)": {x: 670, y: 440}, "I-Wing(200s)": {x: 650, y: 450},
+    "J-Wing(100s)": {x: 630, y: 480}, "J-Wing(200s)": {x: 610, y: 500},
+    "K-Wing(100s)": {x: 530, y: 550}, "K-Wing(200s)": {x: 500, y: 550},
+    "N-Wing(100s)": {x: 300, y: 560},
+    "Campus_Center": {x: 960, y: 540},
   }
 
   // Populate the select box

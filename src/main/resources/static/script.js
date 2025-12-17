@@ -155,6 +155,19 @@ document.addEventListener("DOMContentLoaded", () => {
       // Display result
       resultContent.textContent = result;
       resultPanel.classList.remove("hidden");
+
+      // Replace pathList with the returned TSP order
+      const tspPoints = result.split(" → ");
+      pathList.innerHTML = "";
+      clearDots(); // remove old dots
+      tspPoints.forEach(p => {
+          const li = document.createElement("li");
+          li.textContent = p;
+          pathList.appendChild(li);
+          placeDot(p);
+      });
+
+      drawLines(); // draw lines along the TSP path
     } catch (err) {
       console.error(err);
       alert("Failed to calculate path");
